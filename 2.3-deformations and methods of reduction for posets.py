@@ -91,8 +91,6 @@ def random_core(X):
             return random_core(Y)
     return X
 
-
-
 def random_reduction(X,j):
 
     elms=X.list()
@@ -138,7 +136,6 @@ def random_reduction(X,j):
                 Y=quotient(X,[l[1],l[0]])
                 return Y
         return X
-
 
     if j==4:
         E=X.cover_relations()
