@@ -1,3 +1,4 @@
+#Random spanning tree
 def find(C, u):
     if C[u] != u:
         C[u] = find(C, C[u])
@@ -18,6 +19,7 @@ def kruskal(X):
             union(C, e[0],e[1])
     return T
 
+#Random spanning collapsible
 def expand(X,A):
     not_edges=[e for e in X.cover_relations() if not e in A]
     for e in not_edges:
@@ -31,6 +33,7 @@ def spanning_collapsible(X):
         A=expand(X,A)
     return A
 
+#Presentation associated to the coloring A
 def coloring_presentation(X,A): #A is the list of edges of a spanning collapsible
     gens=[r for r in X.cover_relations() if not r in T]
     F=FreeGroup(len(gens), 'a')
