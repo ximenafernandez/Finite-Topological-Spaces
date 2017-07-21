@@ -1,4 +1,3 @@
-
 #Osaki reductions
 
 def is_down_O_reduction(X,x):
@@ -25,8 +24,6 @@ def down_O_core(X):
 
 def up_O_core(X):
     return down_O_core(op(X))
-
-#falta la version generalizada!!!
 
 #Middle reduction 
 
