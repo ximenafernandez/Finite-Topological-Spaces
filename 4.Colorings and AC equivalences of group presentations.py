@@ -23,7 +23,7 @@ def kruskal(X):
 def expand(X,A):
     not_edges=[e for e in X.cover_relations() if not e in A]
     for e in not_edges:
-        if is_collapsible(weak_core(Poset((X.list(), A+[e])))):
+        if is_collapsible(Poset((X.list(), A+[e]))):
             A.append(e)
     return A
             
