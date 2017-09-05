@@ -53,7 +53,7 @@ def aux_write(edge, isolate):
 		if isolate[edge] == []:
 			return new_attaching
 		for edge in isolate[edge]:
-			write(edge, isolate)
+			aux_write(edge, isolate)
 		return new_attaching
 	else:
 		new_attaching += [edge]
