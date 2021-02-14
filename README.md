@@ -1,6 +1,6 @@
 # Finite-Spaces
 
-This is a SAGE module for finite spaces.
+This is a SAGE module for finite topological spaces.
 We refer to [1] for the theoretical background and proofs of the correctdness of the algorithms.
 
 [1] Fernández, X. L.
