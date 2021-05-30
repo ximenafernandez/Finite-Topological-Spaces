@@ -1,4 +1,4 @@
-# Finite-Spaces
+# Finite-Topological-Spaces
 
 This is a SAGE module for finite topological spaces.
 We refer to [1] for the theoretical background and proofs of the correctness of the algorithms.
