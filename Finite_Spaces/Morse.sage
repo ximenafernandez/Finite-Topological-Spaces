@@ -1,18 +1,15 @@
-import os
-os.system('sage --preparse General.sage')
-os.system('mv General.sage.py General.py')
-os.system('sage --preparse Homotopy.sage')
-os.system('mv Homotopy.sage.py Homotopy.py')
-os.system('sage --preparse Presentations.sage')
-os.system('mv Presentations.sage.py Presentations.py')
+from Finite_Spaces.General       import *
+from Finite_Spaces.Homotopy      import *
+from Finite_Spaces.Presentations import *
 
-from General import *
-from Homotopy import *
-from Presentations import *
-
-#Morse 
+#Morse presentation
 
 def attaching(gens, rels):
+	'''
+	Computes the original attaching map of each 2-cell in the barycentric subdivision of the standard complex associated to the presentation <gens|rels>.
+	INPUT: list of generators and relators in tuple format, e.g x**2 is written as [('x', 2)]
+	OUTPUT: dictionary of 2-cells: an ordered list of oriented 1-cells in format (cell, +1 or - 1). 
+ 	'''
 	att = {} #dictionary of attaching maps
 	
 	#expanded relations of the presentation
@@ -42,11 +39,13 @@ def attaching(gens, rels):
 	
 	return att
 
+# auxiliary function for attaching_Morse
 def write(edge, isolate):
 	global new_attaching
 	new_attaching = []
 	return (aux_write(edge, isolate))
 
+# auxiliary function for attaching_Morse
 def aux_write(edge, isolate):
 	global new_attaching
 	if edge in isolate.keys():
@@ -59,10 +58,17 @@ def aux_write(edge, isolate):
 		new_attaching += [edge]
 		return new_attaching
 
-def attaching_Morse(attaching, matching, critics_dim_2):
+def attaching_Morse(attaching, M, critical_dim_2):
+	'''
+	Computes the attaching map of each 2-cell in the Morse complex associated to the acyclic matching M.
+	INPUT: 
+	- attaching: the dictionary of original attaching maps of 2-cells
+	- M: acyclic matching 
+	- critical_dim_2: the list of critical cells of dimension 2
+ 	'''
 	dim2 = [] # cells of dimension 2 that collapse
 	isolate = {}
-	for (c1,c2) in matching:
+	for (c1,c2) in M:
 		if c2 in attaching.keys(): # c2 of dimension 2
 			dim2.append(c2)
 			att = [] # new attaching map of c1
@@ -101,13 +107,14 @@ def attaching_Morse(attaching, matching, critics_dim_2):
 			isolate[(c2,-1)] = []
   
 	d = {}
-	for c in critics_dim_2:
+	for c in critical_dim_2:
 		rel = []
 		for edge in attaching[c]:
 			rel += write(edge, isolate)
 		d[c] =  rel
 	
 	return d
+
 
 def att_to_group(att, gens):
 	F = FreeGroup(len(gens), 'a')
@@ -122,7 +129,14 @@ def att_to_group(att, gens):
 		Rels.append(aux)
 	return F / Rels
 
-def critical_by_level(X, M): #X the face poset of a regular CW, M an acyclic matching
+
+def critical_by_level(X, M): 
+	'''
+	Return the list of critical points in X associated to the matching M for each level in the face poset
+	INPUT:
+	- X: poset (face poset of a regular CW)
+	- M: (an acyclic) matching 
+	'''
 	matched = [e[0] for e in M] + [e[1] for e in M]
 	edges = X.cover_relations()
 	G = DiGraph(edges)
@@ -136,21 +150,41 @@ def critical_by_level(X, M): #X the face poset of a regular CW, M an acyclic mat
 		C.append(cr)
 	return C
 
-def morse_presentation(gens, rels, M):
+def Morse_presentation(gens, rels, M):
+	'''
+	Returns the Morse presentation associated to the original presentation <gens|rels> and the matching M.
+	'''
 	original_attaching = attaching(gens,rels)
 	X = presentation_poset(gens,rels)
-	criticals = critical_by_level(X, M)
-	morse_attaching = attaching_Morse(original_attaching, M, criticals[2])
-	return att_to_group(morse_attaching, criticals[1])
+	critical_cells = critical_by_level(X, M)
+	Morse_pres = att_to_group(attaching_Morse(original_attaching, M, critical_cells[2]), critical_cells[1])
+	return Morse_pres
 
-def total_relator_len_(G):
-	return sum(sum(abs(e) for (l,e) in r.syllables()) for r in G.relations())
+
 
 #Matchings
 
-#Greedy algorithm that ouputs a random maximal matching
+def induced_spanning_tree(M, X):
+    '''
+    Return the induced spanning tree
+    INPUT:
+    - X face poset of a regular CW-complex
+    - M matching in X with unique critical 0-cell
+    '''
+    T = []
+    for e in M:
+        P = X.subposet(X.order_ideal([e[1]]))
+        if P.height()<2:
+            T.append(e)
+    return T
+	
+
 import random
-def greedy_acyclic_matching(X): #X the face poset of regular CW.
+def greedy_acyclic_matching(X):
+	'''
+	Greedy algorithm that ouputs a random maximal matching.
+	INPUT: X the face poset of regular CW.
+	'''
 	edges = X.cover_relations()
 	in_match = {}
 	for v in X.list():
@@ -179,6 +213,13 @@ def spanning_matching(X):
 		M = greedy_acyclic_matching(X)
 		n = len(critical_by_level(X, M)[0]) == 1
 	return M
+    
+def is_acyclic(X, M):
+    edges = X.cover_relations()
+    D = DiGraph(edges)
+    for e in M:
+        D.reverse_edge(e)
+    return D.is_directed_acyclic()
 
 
 #Incidence of critical cells
@@ -194,7 +235,6 @@ def critical_points(X, M): #X the face poset of a regular CW, M an acyclic match
 def reverse(X, M): #X the face poset of a regular CW, M an acyclic matching
 	edges = X.cover_relations()
 	for e in M:
-		print e
 		edges.remove(list(e))
 		edges.append([e[1], e[0]])
 	return DiGraph(edges)
