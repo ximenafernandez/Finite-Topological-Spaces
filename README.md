@@ -8,7 +8,9 @@ We developed a method to study Q**-transformations of group presentations based 
 
 Discrete Morse Theory for 3-deformations of 2-complexes in based in the notion of _internal collapses_.
 
-<img align="center" src="Pictures/internal_collapse.gif" width="200" height="200" />
+<p align="center">
+<img src="Pictures/internal_collapse.gif" width="250" height="250" />
+</p>
 
 [1] Fernández, X. L. 
 <a href='http://cms.dm.uba.ar/academico/carreras/doctorado/Tesis_Ximena_Fernandez.pdf'>_Combinatorial methods and algorithms in low dimensional topology and the Andrews-Curtis conjecture._</a> 
