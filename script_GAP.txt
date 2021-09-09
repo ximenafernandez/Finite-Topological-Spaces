@@ -1,54 +1,56 @@
-gap> f := FreeGroup(21);
-gap> g := f/[f.5^-1*f.21*f.19^-1*f.18^-1*f.9*f.5^-1*f.21*f.19^-1*f.21^-1*f.5*f.11^-1*f.3*f.1^-1*f.20*f.21^-1*f.5,
-  f.19*f.16^-1*f.7*f.5^-1*f.21,
-  f.5^-1*f.21*f.19^-1*f.18^-1*f.9*f.10^-1*f.5^-1*f.21*f.19^-1*f.21^-1*f.5,
-  f.19*f.21^-1*f.5*f.13^-1*f.14*f.19^-1*f.18^-1*f.9*f.5^-1*f.21*f.19^-1,
-  f.1^-1*f.20*f.19*f.21^-1*f.5*f.8^-1*f.12*f.9^-1*f.18*f.20^-1*f.1,
-  f.19*f.21^-1*f.5*f.9^-1*f.18*f.19*f.21^-1*f.5*f.6^-1*f.11*f.5^-1*f.21*f.19^-1,
-  f.1^-1*f.20*f.18^-1*f.9*f.5^-1*f.21*f.19^-1*f.21^-1*f.5*f.12^-1*f.21*f.20^-1*f.1,
-  f.19*f.21^-1*f.5*f.9^-1*f.18*f.20^-1*f.1*f.2^-1*f.10*f.5^-1*f.21,
-  f.19*f.21^-1*f.5*f.9^-1*f.18*f.15^-1,
-  f.19^-1*f.17^-1*f.1^-1*f.20*f.18^-1*f.9*f.5^-1*f.21*f.19^-1,
-  f.5^-1*f.21*f.18^-1*f.15*f.19*f.21^-1*f.5,
-  f.19^-1*f.14^-1*f.8*f.5^-1*f.21,
-  f.19*f.21^-1*f.5*f.9^-1*f.18*f.20^-1*f.1*f.3^-1*f.9*f.5^-1*f.21,
-  f.5^-1*f.21*f.19^-1*f.21^-1*f.5*f.6,
-  f.19*f.21^-1*f.2*f.1^-1*f.20,
-  f.21^-1*f.5*f.4*f.1^-1*f.20*f.18^-1*f.9*f.5^-1*f.21*f.19^-1,
-  f.19*f.21^-1*f.5*f.9^-1*f.18*f.20^-1*f.17*f.19*f.21^-1*f.5*f.9^-1*f.18*f.19,
-  f.5^-1*f.21*f.20^-1*f.1*f.4^-1*f.20*f.18^-1*f.9*f.5^-1*f.21*f.19^-1*f.21^-1*f.5*f.9^-1*f.18*f.19*f.21^-1*f.5,
-  f.19*f.20^-1*f.1*f.13*f.5^-1*f.21*f.19*f.21^-1*f.5*f.9^-1*f.18,
-  f.5^-1*f.21*f.19*f.21^-1*f.5*f.9^-1*f.18*f.19*f.21^-1*f.5*f.7^-1*f.5^-1*f.21*f.19^-1*f.18^-1*f.9,
-  f.18^-1*f.9*f.5^-1*f.21*f.19^-2*f.16*f.19^-1];
+#Here, the labels of the generators of the Morse presentation are 
+#axx->f.xx if xx is not zero
+#a0 ->f.20
+
+gap> f := FreeGroup(20);
+gap> g := f/[f.13^-1*f.11*f.7^-1*f.10*f.12^-1*f.18*f.15^-1*f.3*f.2^-1*f.19*f.13^-1*f.11*f.7^-1*f.10*f.11^-1*f.13,
+ f.2^-1*f.19*f.13^-1*f.11*f.6^-1*f.17*f.13^-1*f.11*f.7^-1*f.10*f.11^-1*f.13*f.18^-1*f.12*f.10^-1*f.7*f.11^-1*f.13*f.19^-1*f.2,
+ f.11^-1*f.13*f.19^-1*f.2*f.4^-1,
+ f.18^-1*f.12*(f.10^-1*f.7)^2*f.11^-1*f.13*f.16^-1*f.12*f.7^-1*f.10*f.12^-1*f.18*f.13^-1*f.11*f.10^-1*f.7*f.11^-1*f.13,
+ f.18^-1*f.12*f.10^-1*f.7*f.11^-1*f.13*f.19^-1*f.2*f.3^-1*f.13,
+ f.13^-1*f.11*f.7^-1*f.10*f.12^-1*f.18*f.13^-1*f.11*f.10^-1*f.7*f.11^-1*f.13*f.6*f.10^-1*f.7*f.11^-1*f.13,
+ f.7^-1*f.10*f.12^-1*f.18*f.13^-1*f.11*f.9^-1*f.19*f.13^-1*f.11*f.7^-1*f.10,
+ f.2^-1*f.19*f.13^-1*f.11*f.7^-1*f.10*f.12^-1*f.18*f.13^-1*f.11*f.5^-1*f.4,
+ f.2^-1*f.19*f.13^-1*f.11*f.7^-1*f.10*f.12^-1*f.18*f.13^-1*f.11*f.10^-1*f.7*f.11^-1*f.13*f.18^-1*f.12*f.11^-1*f.13*f.19^-1*f.2*f.1^-1*f.20,
+ f.13^-1*f.11*f.7^-1*f.10*f.12^-1*f.18*f.13^-1*f.11*f.10^-1*f.7*f.11^-1*f.13*f.18^-1*f.12*f.10^-1*f.7*f.11^-1*f.13*f.19^-1*f.8*f.10^-1*f.7*f.11^-1*f.13,
+ f.13^-1*f.11*f.12^-1*f.18*f.14^-1*f.1*f.2^-1*f.19*f.13^-1*f.11*f.7^-1*f.10*f.12^-1*f.18,
+ f.2^-1*f.19*f.13^-1*f.11*f.7^-1*f.10*f.12^-1*f.18*f.13^-1*f.11*f.7^-1*f.10*f.11^-1*f.16*f.19^-1*f.2,
+ f.10^-1*f.7*f.11^-1*f.13*f.19^-1*f.2*f.20^-1*f.2^-1*f.19*f.13^-1*f.11,
+ f.11^-1*f.13*f.18^-1*f.13^-1*f.11,
+ f.13^-1*f.11*f.7^-1*f.10*f.7^-1*f.5*f.10^-1*f.7*f.11^-1*f.13*f.18^-1*f.12*f.10^-1*f.7*f.11^-1*f.13,
+ f.13^-1*f.11*f.7^-1*f.10*f.11^-1*f.13*f.9*f.10^-1*f.7*f.11^-1*f.13,
+ f.13^-1*f.11*f.7^-1*f.10*f.11^-1*f.13*f.18^-1*f.12*f.10^-1*f.7*f.11^-1*f.13*f.19^-1*f.2,
+ f.13^-1*f.11*f.7^-1*f.10*f.14*f.18^-1*f.12*f.10^-1*f.7*f.11^-1*f.13,
+ f.11^-1*f.13*f.18^-1*f.12*f.10^-1*f.7*f.8^-1*f.10,
+ f.13^-1*f.11*f.7^-1*f.10*f.11^-1*f.13*f.17^-1*f.15*f.13^-1*f.11*f.10^-1*f.7*f.11^-1*f.13];
 gap> p := PresentationFpGroup( g );
 gap> TzOptions( p ).printLevel := 2;
 gap> SimplifyPresentation( p );
-#I  there are 21 generators and 21 relators of total length 146
-#I  there are 21 generators and 21 relators of total length 121
-#I  there are 21 generators and 21 relators of total length 113
-#I  there are 21 generators and 21 relators of total length 106
-#I  eliminating f3 = f6^2*f21*f20^-1*f1
-#I  eliminating f11 = f6^2*f10
-#I  eliminating f18 = f15*f19
-#I  eliminating f9 = f15*f19*f14^-1*f12
-#I  eliminating f7 = f16*f19^-1*f21^-1*f5
-#I  eliminating f16 = f8^-1*f12*f13^-1*f2^-1*f21
-#I  eliminating f2 = f21*f19^-1*f20^-1*f1
-#I  eliminating f10 = f8^-1*f13
-#I  eliminating f1 = f20*f15^-1*f19^-1*f17^-1
-#I  eliminating f20 = f4^-1*f13^-1*f8*f12^-1*f14
-#I  eliminating f5 = f21*f17^-1*f4^-1*f6^-1
-#I  eliminating f21 = f12*f6*f4*f17*f15
-#I  eliminating f8 = f14*f17^-1*f4^-1
-#I  eliminating f15 = f17^-1*f4^-1*f12^-1*f14
-#I  eliminating f13 = f14*f19^-1*f14^-1*f12
-#I  eliminating f6 = f4*f17*f19*f17^-1*f4^-1
-#I  eliminating f19 = f17^-1*f4^-1*f17^-1*f14
-#I  eliminating f14 = f12*f17^-1*f12*f4*(f4*f17)^2
-#I  there are 3 generators and 3 relators of total length 56
-#I  there are 3 generators and 3 relators of total length 40
-#I  there are 3 generators and 3 relators of total length 26
-#I  there are 3 generators and 3 relators of total length 24
-#I  there are 3 generators and 3 relators of total length 22
-#I  eliminating f12 = f4^-1
+#I  eliminating f18 = idword
+#I  eliminating f17 = f15
+#I  eliminating f14 = f12^-1
+#I  there are 17 generators and 17 relators of total length 146
+#I  there are 17 generators and 17 relators of total length 106
+#I  there are 17 generators and 17 relators of total length 91
+#I  there are 17 generators and 17 relators of total length 86
+#I  there are 17 generators and 17 relators of total length 78
+#I  there are 17 generators and 17 relators of total length 75
+#I  eliminating f19 = f4^-1*f12^-1*f16
+#I  eliminating f16 = f12*f4*f2*f4^-1*f9^-1
+#I  eliminating f15 = f3*f20^-1*f3^-1*f13
+#I  eliminating f13 = f11*f9^-1
+#I  eliminating f2 = f9*f5^-1*f4*f20
+#I  eliminating f1 = f20*f12*f4
+#I  eliminating f8 = f10*f5^-1
+#I  eliminating f11 = f3*f4^-1*f5
+#I  eliminating f3 = f6*f7^-1*f10*f6^-1*f9*f5^-1*f4*f20
+#I  eliminating f7 = f4*f12
+#I  eliminating f6 = f4^-1*f5*f9^-1*f12
+#I  eliminating f20 = f4^-1*f10^-1*f4*f12*f4
+#I  eliminating f10 = f4*f12*f9^-1*f4^-1*f5
+#I  eliminating f12 = f9*f5^-1*f9^-1*f4^-1*f5
+#I  there are 3 generators and 3 relators of total length 54
+#I  there are 3 generators and 3 relators of total length 25
+#I  there are 3 generators and 3 relators of total length 21
+#I  eliminating f9 = idword
 #I  there are 2 generators and 1 relator of total length 4
