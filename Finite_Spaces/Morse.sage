@@ -164,7 +164,7 @@ def Morse_presentation(gens, rels, M):
 
 #Matchings
 
-def induced_spanning_tree(M, X):
+def induced_spanning_tree(X,M):
     '''
     Return the induced spanning tree
     INPUT:
@@ -174,7 +174,7 @@ def induced_spanning_tree(M, X):
     T = []
     for e in M:
         P = X.subposet(X.order_ideal([e[1]]))
-        if P.height()<2:
+        if P.height()<3:
             T.append(e)
     return T
 	
