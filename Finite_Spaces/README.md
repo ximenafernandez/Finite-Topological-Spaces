@@ -1,4 +1,4 @@
-This is the source code of the SAGE Module for Finite Topological Spaces. Find below a short description of the type of functions implemented in each submodule.
+This is the source code of the SAGE Module for Finite Topological Spaces. Find below a short description of the aim of the functions implemented in each submodule.
 
 * **General:** Basic operations between finite topological spaces.
 
