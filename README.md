@@ -4,7 +4,7 @@ _Author: Ximena Fernandez_
 **Finite_Spaces** is a SAGE module to work with Finite Topological Spaces.
 We refer to [1] for the theoretical background and proofs of the correctness of the algorithms.
 
-We developed a method to study Q**-transformations of group presentations based on finite spaces and a refinement of discrete Morse theory. It was applyied to prove that protential counterexamples to the Andrews-Curtis conjecture do satisfy the conjecture [2]. The computational experiments can be found at **Potential_counterexamples_AC.ipynb**
+We developed a method to study Q**-transformations of group presentations based on finite spaces and a refinement of discrete Morse theory. It was applied to prove that potential counterexamples to the Andrews-Curtis conjecture do satisfy the conjecture [2]. The computational experiments can be reproduced at **Potential_counterexamples_AC.ipynb**
 
 Discrete Morse Theory for 3-deformations of 2-complexes in based in the notion of _internal collapse_.
 
