@@ -1,5 +1,8 @@
 # Finite Topological Spaces
-_Author: Ximena Fernandez_
+* Repository: https://github.com/ximenafernandez/Finite-Topological-Spaces
+
+## Author: 
+* Ximena Fernandez
 
 **Finite_Spaces** is a SAGE module to work with Finite Topological Spaces.
 We refer to [1] for the theoretical background and proofs of the correctness of the algorithms.
